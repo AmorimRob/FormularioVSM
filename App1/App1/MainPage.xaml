@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App1"
+             x:Class="App1.MainPage">
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="ValidationStates">
+                        <VisualState x:Name="Valid">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="Black"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Invalid">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="Red"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ValidationMessage" TargetType="Label">
+            <Setter Property="FontSize" Value="Micro"/>
+            <Setter Property="FontAttributes" Value="Italic"/>
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="ValidationStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="IsVisible" Value="False"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Valid">
+                            <VisualState.Setters>
+                                <Setter Property="IsVisible" Value="False"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Invalid">
+                            <VisualState.Setters>
+                                <Setter Property="IsVisible" Value="True"/>
+                                <Setter Property="TextColor" Value="Red"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        
+    </ContentPage.Resources>
+    <StackLayout Margin="10">
+        <Label Text="Nome"/>
+        <Entry x:Name="Nome" TextChanged="Nome_TextChanged"/>
+        <Label x:Name="NomeMsg" Style="{StaticResource ValidationMessage}" Text="O campo nome é obrigatório."/>
+        
+        <Label Text="E-mail"/>
+        <Entry x:Name="Email" TextChanged="Email_TextChanged"/>
+        <Label x:Name="EmailMsg" Style="{StaticResource ValidationMessage}" Text="Informe um e-mail válido."/>
+        
+        <Label Text="Senha"/>
+        <Entry IsPassword="True" x:Name="Senha" TextChanged="Senha_TextChanged"/>
+        <Label x:Name="SenhaMsg" Style="{StaticResource ValidationMessage}" Text="A senha deve conter 6 caracteres ou mais."/>
+
+        <Button Text="Enviar" VerticalOptions="EndAndExpand" Clicked="Button_Clicked" />
+    </StackLayout>
+
+</ContentPage>
