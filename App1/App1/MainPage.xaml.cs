@@ -12,9 +12,10 @@ namespace App1
 		public MainPage()
 		{
 			InitializeComponent();
+
 		}
 
-        private bool CheckUserDetailsValid()
+        private bool ValidarNomeDoUsuario()
         {
             var isValid = (Nome.Text ?? "").Length > 0;
 
@@ -26,7 +27,7 @@ namespace App1
             return isValid;
         }
 
-        private bool CheckEmailValid()
+        private bool ValidarEmailInformado()
         {
             var isValid = Email.Text.Contains("@");
 
@@ -38,7 +39,7 @@ namespace App1
             return isValid;
         }
 
-        private bool CheckPasswordDetailsValid()
+        private bool ValidarSenhaInformada()
         {
             var isValid = Senha.Text.Length > 6;
 
@@ -60,26 +61,27 @@ namespace App1
 
         bool IsValid()
         {
-            var nomeValid = CheckUserDetailsValid();
-            var emailValid = CheckEmailValid();
-            var senhaValid = CheckPasswordDetailsValid();
+            var nomeValid = ValidarNomeDoUsuario();
+            var emailValid = ValidarEmailInformado();
+            var senhaValid = ValidarSenhaInformada();
 
             return nomeValid && emailValid && senhaValid;
         }
 
         private void Nome_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CheckUserDetailsValid();
+            ValidarNomeDoUsuario();
         }
 
         private void Email_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CheckEmailValid();
+            ValidarEmailInformado();
         }
 
         private void Senha_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CheckPasswordDetailsValid();
+            Button
+            ValidarSenhaInformada();
         }
     }
 }
